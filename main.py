@@ -6,8 +6,8 @@ import os
 app = Flask(__name__)
 
 
-def read_ocr(file):
-    out = pytesseract.image_to_string(Image.open(file))
+def read_ocr(filename):
+    out = pytesseract.image_to_string(Image.open(filename))
     print(out)
 
 
@@ -15,11 +15,12 @@ def read_ocr(file):
 def home():
     if request.method == 'POST':
         if request.form['file']:
-            file = request.form['file']
+            file_bytes = request.form['file']
             print('incoming image')
-            print(type(file))
-            with open('tmp.png', 'wb+') as f:
-                f.write(file.encode())
+            print(type(file_bytes))
+            print(file_bytes)
+            with open('tmp', 'wb+') as f:
+                f.write(file_bytes.encode())
             print(os.listdir())
             read_ocr('tmp.png')
             return "kek"
