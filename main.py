@@ -20,7 +20,7 @@ def home():
         k = open('tmp', 'rb').read()
         print(len(k))
         print(k.decode())
-        #read_ocr()
+        read_ocr()
         return 'k'
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
