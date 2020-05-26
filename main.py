@@ -17,9 +17,9 @@ def home():
     if request.method == 'POST':
         #FileStorage(request.stream).save('tmp')
         infile = request.files['file']
+        infile.save('tmp')
         print(infile)
-        with open('tmp', 'wb+') as f:
-            f.write(infile.read())
+        print("File size: "+os.path.getsize('tmp'))
         print(os.listdir())
         k = open('tmp', 'rb').read()
         print(len(k))
