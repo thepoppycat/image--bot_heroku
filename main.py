@@ -19,7 +19,7 @@ def home():
         infile = request.files['file']
         infile.save('tmp')
         print(infile)
-        print(f'File size: {os.path.getsize('tmp')}')
+        print(f'File size: {os.path.getsize("tmp")}')
         print(os.listdir())
         k = open('tmp', 'rb').read()
         print(len(k))
