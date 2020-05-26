@@ -18,7 +18,8 @@ def home():
         infile = FileStorage(request.stream)
         print(infile)
         print(type(infile))
-        print(dir(infile))
+        for att in dir(infile):
+            print(f'{att}: '+str(eval(f'infile.{att}')))
         print(list(infile.keys()))
         return 'k'
         infile.save('tmp')
