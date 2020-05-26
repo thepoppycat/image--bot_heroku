@@ -19,7 +19,8 @@ def home():
         print(f'File size: {os.path.getsize("tmp")}')
         print(os.listdir())
         k = open('tmp', 'rb').read()
-        print(k[:20])
+        print(k[-20:])
+        print(k)
         read_ocr()
         return 'k'
 
