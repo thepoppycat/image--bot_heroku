@@ -24,8 +24,9 @@ def home():
         if file.filename == '':
             print('No selected file')
             return redirect('/')
-        file.save('./', 'tmp')
+        file.save('./tmp')
         print(os.listdir())
+        read_ocr()
         return 'k'
         if request.form['file']:
             file_bytes = request.form['file']
