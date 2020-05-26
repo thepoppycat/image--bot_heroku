@@ -23,7 +23,6 @@ def home():
         print(os.listdir())
         k = open('tmp', 'rb').read()
         print(len(k))
-        print(k.decode())
         read_ocr()
         return 'k'
 
