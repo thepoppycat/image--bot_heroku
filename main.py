@@ -1,40 +1,21 @@
 from flask import Flask, redirect, request
 import pytesseract
 import os
-import cv2
-import shutil
-from PIL import Image
-import requests
 
 app = Flask(__name__)
 
 
-def read_ocr(url):
-    r = requests.get(url, stream=True)
-    if r.status_code != 200:
-        print("Unable to retrieve image")
-        return
-    filename = f'tmp.{url[-3:]}'
-    with open(filename, 'wb+') as f:
-        r.raw.decode_content = True
-        shutil.copyfileobj(r.raw, f)
-    image = cv2.imread(filename)
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    gray = cv2.threshold(gray, 0, 255,
-                         cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
-    gray = cv2.medianBlur(gray, 3)
-    cv2.imwrite(filename, gray)
-    out = pytesseract.image_to_string(Image.open(filename))
+def read_ocr(file):
+    out = pytesseract.image_to_string(file)
     print(out)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        if request.form['url']:
+        if request.form['file']:
             print('incoming image')
-            print(request.form['url'])
-            read_ocr(request.form['url'])
+            read_ocr(request.form['file'])
             return "kek"
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
