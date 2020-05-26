@@ -8,8 +8,11 @@ app = Flask(__name__)
 
 
 def read_ocr():
-    out = pytesseract.image_to_string(Image.open('tmp'))
-    return out
+    text = pytesseract.image_to_string(Image.open('tmp'))
+    text = text.replace('|', 'I')
+    text = text.replace('\n', ' ')
+    text = text.replace('[', '')
+    return text
 
 
 @app.route('/', methods=['GET', 'POST'])
