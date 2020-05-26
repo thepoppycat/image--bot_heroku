@@ -14,6 +14,7 @@ def read_ocr():
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
+        print(request.files)
         if request.form['file']:
             file_bytes = request.form['file']
             print('incoming image')
