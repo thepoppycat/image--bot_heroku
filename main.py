@@ -26,19 +26,11 @@ def home():
             return redirect('/')
         file.save('./tmp')
         print(os.listdir())
-        read_ocr()
+        k = open('tmp', 'rb').read()
+        print(len(k))
+        print(k.decode()[:4])
+        #read_ocr()
         return 'k'
-        if request.form['file']:
-            file_bytes = request.form['file']
-            print('incoming image')
-            print(type(file_bytes))
-            print(file_bytes.encode())
-            print(len(file_bytes.encode()))
-            with open('tmp', 'wb+') as f:
-                f.write(file_bytes.encode())
-            print(os.listdir())
-            read_ocr()
-            return "kek"
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
