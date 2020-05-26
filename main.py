@@ -9,27 +9,17 @@ app = Flask(__name__)
 
 def read_ocr():
     out = pytesseract.image_to_string(Image.open('tmp'))
-    print(out)
+    return out
 
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        infile = FileStorage(request.stream)
-        print(infile)
-        print(type(infile))
-        for att in dir(infile):
-            print(f'{att}: '+str(eval(f'infile.{att}')))
-        print(list(infile.keys()))
-        return 'k'
-        infile.save('tmp')
+        print(request.files)
+        print(request.files['file'])
+        request.files['file'].save('tmp')
         print(f'File size: {os.path.getsize("tmp")}')
-        print(os.listdir())
-        k = open('tmp', 'rb').read()
-        print(k[-20:])
-        print(k)
-        read_ocr()
-        return 'k'
+        return read_ocr()
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
