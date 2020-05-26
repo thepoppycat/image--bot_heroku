@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, request
 import pytesseract
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ def home():
         if request.form['url']:
             print('incoming image')
             print(request.form['url'])
-            return kek
+            return "kek"
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
