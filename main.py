@@ -16,13 +16,10 @@ def read_ocr():
 def home():
     if request.method == 'POST':
         FileStorage(request.stream).save('tmp')
-        #infile = request.files['file']
-        #infile.save('tmp')
-        #print(infile)
         print(f'File size: {os.path.getsize("tmp")}')
         print(os.listdir())
         k = open('tmp', 'rb').read()
-        print(len(k))
+        print(k[:20])
         read_ocr()
         return 'k'
 
