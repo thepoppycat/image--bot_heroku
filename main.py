@@ -1,5 +1,6 @@
 from flask import Flask, redirect, request
 import pytesseract
+from PIL import Image
 import os
 
 app = Flask(__name__)
@@ -14,8 +15,11 @@ def read_ocr(file):
 def home():
     if request.method == 'POST':
         if request.form['file']:
+            file = request.form['file']
             print('incoming image')
-            print(type(request.form['file']))
+            print(type(file))
+            with open('tmp.png', 'wb+') as f:
+                f.write(file.encode())
             #read_ocr(request.form['file'])
             return "kek"
 
