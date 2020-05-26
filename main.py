@@ -15,7 +15,8 @@ def read_ocr():
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        f = request.files['file']
+        f = request.files.get('file')
+        return str(request.files)
         f.save('tmp')
         #FileStorage(request.stream).save('tmp')
         print(os.listdir())
