@@ -15,7 +15,8 @@ def home():
     if request.method == 'POST':
         if request.form['file']:
             print('incoming image')
-            read_ocr(request.form['file'])
+            print(type(request.form['file']))
+            #read_ocr(request.form['file'])
             return "kek"
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
