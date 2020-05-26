@@ -4,6 +4,7 @@ import os
 import cv2
 import shutil
 from PIL import Image
+import requests
 
 app = Flask(__name__)
 
