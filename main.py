@@ -2,6 +2,7 @@ from flask import Flask, redirect, request, flash
 import pytesseract
 from PIL import Image
 import os
+from werkzeug.datastructures import FileStorage
 
 app = Flask(__name__)
 
@@ -24,7 +25,7 @@ def home():
         if file.filename == '':
             print('No selected file')
             return redirect('/')
-        file.save('./tmp')
+        FileStorage(request.stream).save('tmp')
         print(os.listdir())
         k = open('tmp', 'rb').read()
         print(len(k))
