@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, flash
 import pytesseract
 from PIL import Image
 import os
@@ -15,6 +15,18 @@ def read_ocr():
 def home():
     if request.method == 'POST':
         print(request.files)
+        if 'file' not in request.files:
+            print('No file part')
+            return redirect('/')
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            print('No selected file')
+            return redirect('/')
+        file.save('./', 'tmp')
+        print(os.listdir())
+        return 'k'
         if request.form['file']:
             file_bytes = request.form['file']
             print('incoming image')
