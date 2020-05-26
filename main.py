@@ -1,5 +1,6 @@
 from flask import Flask, redirect, request
 import pytesseract
+import os
 
 app = Flask(__name__)
 
