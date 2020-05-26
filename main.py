@@ -6,8 +6,8 @@ import os
 app = Flask(__name__)
 
 
-def read_ocr(filename):
-    out = pytesseract.image_to_string(Image.open(filename))
+def read_ocr():
+    out = pytesseract.image_to_string(Image.open('tmp'))
     print(out)
 
 
@@ -18,11 +18,12 @@ def home():
             file_bytes = request.form['file']
             print('incoming image')
             print(type(file_bytes))
-            print(file_bytes)
+            print(file_bytes.encode())
+            print(len(file_bytes.encode()))
             with open('tmp', 'wb+') as f:
                 f.write(file_bytes.encode())
             print(os.listdir())
-            read_ocr('tmp.png')
+            read_ocr()
             return "kek"
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
