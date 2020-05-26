@@ -15,7 +15,13 @@ def read_ocr():
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        FileStorage(request.stream).save('tmp')
+        infile = FileStorage(request.stream)
+        print(infile)
+        print(type(infile))
+        print(dir(infile))
+        print(list(infile.keys()))
+        return 'k'
+        infile.save('tmp')
         print(f'File size: {os.path.getsize("tmp")}')
         print(os.listdir())
         k = open('tmp', 'rb').read()
