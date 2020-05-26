@@ -18,7 +18,8 @@ def home():
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
-app.secret_key = os.urandom(12)
+if __name__=="__main__":
+    app.secret_key = os.urandom(12)
     # for local deployment
     #app.run(debug=True)
     # for heroku
