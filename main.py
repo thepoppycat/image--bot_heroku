@@ -16,7 +16,8 @@ def read_ocr():
 def home():
     if request.method == 'POST':
         #FileStorage(request.stream).save('tmp')
-        infile = request.files.get('file')
+        infile = request.files['file']
+        print(infile)
         with open('tmp', 'wb+') as f:
             f.write(infile.read())
         print(os.listdir())
