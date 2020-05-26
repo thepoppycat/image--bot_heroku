@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 
 def read_ocr(image):
+    pass
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -13,6 +14,7 @@ def home():
         if request.form['url']:
             print('incoming image')
             print(request.form['url'])
+            return kek
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
