@@ -15,16 +15,6 @@ def read_ocr():
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        print(request.files)
-        if 'file' not in request.files:
-            print('No file part')
-            return redirect('/')
-        file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
-        if file.filename == '':
-            print('No selected file')
-            return redirect('/')
         FileStorage(request.stream).save('tmp')
         print(os.listdir())
         k = open('tmp', 'rb').read()
