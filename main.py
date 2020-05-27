@@ -10,11 +10,6 @@ app = Flask(__name__)
 
 
 def read_ocr():
-    image = cv2.imread('raw')
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    gray = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
-    gray = cv2.medianBlur(gray, 3)
-    cv2.imwrite('gray', gray)
     text = pytesseract.image_to_string(Image.open('gray'))
     text = text.replace('|', 'I')
     text = text.replace('\n', ' ')
@@ -85,8 +80,8 @@ def classify_face():
 def home():
     if request.method == 'POST':
         print(request.files)
-        print(request.files['file'])
-        request.files['file'].save('raw')
+        request.files['raw'].save('raw')
+        request.files['gray'].save('gray')
         print(f'File size: {os.path.getsize("raw")}')
         return (read_ocr(), classify_face())
 
