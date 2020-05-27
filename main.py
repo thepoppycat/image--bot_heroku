@@ -37,7 +37,7 @@ def get_encoded_faces():
 
 FACES = get_encoded_faces()
 
-def classify_face():
+def classify_faces():
     """
     will find all of the faces in a given image and label
     them if it knows what they are
@@ -48,6 +48,7 @@ def classify_face():
     global FACES
     faces = FACES
     img = cv2.imread('raw', 1)
+    print('ok')
     if img is None:
         print("Invalid image array")
         return
@@ -85,8 +86,8 @@ def home():
         print(f'File size: {os.path.getsize("raw")}')
         text = read_ocr()
         out = text
+        out += str(classify_faces())
         return out
-        return (read_ocr(), classify_face())
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
