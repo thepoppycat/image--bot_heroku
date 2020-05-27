@@ -13,22 +13,20 @@ def get_img(url):
     if r.status_code != 200:
         print("Unable to retrieve image")
         return
-    ext = url[url.rfind('.'):]
-    filename = 'raw'+ext
+    filename = 'raw'
     with open(filename, 'wb+') as f:
         r.raw.decode_content = True
         shutil.copyfileobj(r.raw, f)
     print('received image')
-    return ext
 
 
-def read_ocr(ext):
-    image = cv2.imread('raw'+ext, 1)
+def read_ocr():
+    image = cv2.imread('raw', 1)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
     gray = cv2.medianBlur(gray, 3)
-    cv2.imwrite('gray'+ext, gray)
-    text = pytesseract.image_to_string(Image.open('gray'+ext))
+    cv2.imwrite('gray.png', gray)
+    text = pytesseract.image_to_string(Image.open('gray.png'))
     text = text.replace('|', 'I')
     text = text.replace('\n', ' ')
     text = text.replace('[', '')
@@ -57,7 +55,7 @@ def get_encoded_faces():
 FACES = get_encoded_faces()
 
 
-def classify_faces(ext):
+def classify_faces():
     """
     will find all of the faces in a given image and label
     them if it knows what they are
@@ -67,7 +65,7 @@ def classify_faces(ext):
     """
     global FACES
     faces = FACES
-    img = cv2.imread('raw'+ext, 1)
+    img = cv2.imread('raw', 1)
     print('ok')
     if img is None:
         print("Invalid image array")

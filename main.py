@@ -27,11 +27,11 @@ def home():
 def direct():
     if request.method == 'POST':
         url = request.form.get('url')
-        ext = get_img(url)  # saved to 'raw'+ext
-        print(f'File size: {os.path.getsize("raw"+ext)}')
-        res = read_ocr(ext)
+        get_img(url)  # saved to 'raw'
+        print(f'File size: {os.path.getsize("raw")}')
+        res = read_ocr()
         print(res)
-        res += '!^@*!%@^#*!@^#'+str(classify_faces(ext))
+        res += '!^@*!%@^#*!@^#'+str(classify_faces())
         return res
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
