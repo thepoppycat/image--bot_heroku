@@ -4,6 +4,7 @@ import requests
 import shutil
 import pytesseract
 import face_recognition as fr
+import os
 
 
 def get_img(url):
