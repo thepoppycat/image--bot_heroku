@@ -88,7 +88,6 @@ def home():
         print(request.files['file'])
         request.files['file'].save('raw')
         print(f'File size: {os.path.getsize("raw")}')
-        return 'ok'
         return (read_ocr(), classify_face())
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
