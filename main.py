@@ -85,9 +85,9 @@ def home():
         request.files['gray'].save('gray')
         print(f'File size: {os.path.getsize("raw")}')
         text = read_ocr()
-        out = text
-        out += str(classify_faces())
-        return out
+        res = text
+        res += '!^@*!%@^#*!@^#'+str(classify_faces())
+        return res
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
