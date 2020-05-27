@@ -5,6 +5,7 @@ import shutil
 import pytesseract
 import face_recognition as fr
 import os
+import numpy as np
 
 
 def get_img(url):
