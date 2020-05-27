@@ -29,8 +29,8 @@ def direct():
         url = request.form.get('url')
         ext = get_img(url)  # saved to 'raw'+ext
         print(f'File size: {os.path.getsize("raw"+ext)}')
-        text = read_ocr(ext)
-        res = text
+        res = read_ocr(ext)
+        print(res)
         res += '!^@*!%@^#*!@^#'+str(classify_faces(ext))
         return res
 
