@@ -84,7 +84,7 @@ def home():
         request.files['gray'].save('gray')
         print(f'File size: {os.path.getsize("raw")}')
         text = read_ocr()
-        out += text
+        out = text
         return out
         return (read_ocr(), classify_face())
 
