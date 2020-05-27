@@ -83,7 +83,9 @@ def home():
         request.files['raw'].save('raw')
         request.files['gray'].save('gray')
         print(f'File size: {os.path.getsize("raw")}')
-        return 'ok'
+        text = read_ocr()
+        out += text
+        return out
         return (read_ocr(), classify_face())
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
