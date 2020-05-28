@@ -45,7 +45,6 @@ def get_encoded_faces():
     for path in paths:
         for f in os.listdir(path):
             if f.endswith(".jpg") or f.endswith(".png"):
-                print(f)
                 try:
                     face = fr.load_image_file(path + f)
                     encoding = fr.face_encodings(face)[0]
@@ -99,5 +98,3 @@ def classify_faces():
     return face_locations, face_names
 
 
-if __name__=="__main__":
-    get_encoded_faces()
