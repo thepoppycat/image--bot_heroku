@@ -41,20 +41,18 @@ def get_encoded_faces():
     :return: dict of (name, image encoded)
     """
     encoded = {}
-    path = "./faces/"
-    for dirpath, dnames, fnames in os.walk(path):
-        for f in fnames:
+    paths = ["./faces/", "./faces/hist/"]
+    for path in paths:
+        for f in os.listdir(path):
             if f.endswith(".jpg") or f.endswith(".png"):
-                face = fr.load_image_file(path + f)
-                encoding = fr.face_encodings(face)[0]
-                encoded[f.split(".")[0]] = encoding
-    path = "./faces/hist/"
-    for dirpath, dnames, fnames in os.walk(path):
-        for f in fnames:
-            if f.endswith(".jpg") or f.endswith(".png"):
-                face = fr.load_image_file(path + f)
-                encoding = fr.face_encodings(face)[0]
-                encoded[f.split(".")[0]] = encoding
+                print(f)
+                try:
+                    face = fr.load_image_file(path + f)
+                    encoding = fr.face_encodings(face)[0]
+                    encoded[f.split(".")[0]] = encoding
+                except:
+                    pass
+
 
     return encoded
 
@@ -99,3 +97,7 @@ def classify_faces():
         face_names.append(name)
 
     return face_locations, face_names
+
+
+if __name__=="__main__":
+    get_encoded_faces()
