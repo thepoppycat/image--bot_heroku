@@ -1,7 +1,6 @@
 from flask import Flask, redirect, request, flash
 import os
 
-from image import read_ocr_plain, classify_faces_plain
 from direct import get_img, read_ocr, classify_faces
 
 app = Flask(__name__)
