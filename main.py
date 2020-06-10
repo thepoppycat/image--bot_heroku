@@ -32,7 +32,8 @@ def direct():
 		print(res[0])
 		res.append(read_qr())
 		print(res[1])
-		res.append(str(classify_faces()))
+		res.append(classify_faces())
+		res = list(map(str, res))
 		return '*#&%^@'.join(res)
 		
 	return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
