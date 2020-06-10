@@ -24,18 +24,18 @@ def home():
 
 @app.route('/direct', methods=['GET', 'POST'])
 def direct():
-    if request.method == 'POST':
-        url = request.form.get('url')
-        get_img(url)  # saved to 'raw'
-        print(f'File size: {os.path.getsize("raw")}')
-        res = [read_ocr()]
-        print(res[0])
+	if request.method == 'POST':
+		url = request.form.get('url')
+		get_img(url)  # saved to 'raw'
+		print(f'File size: {os.path.getsize("raw")}')
+		res = [read_ocr()]
+		print(res[0])
 		res.append(read_qr())
 		print(res[1])
-        res.append(str(classify_faces()))
-        return '*#&%^@'.join(res)
-
-    return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+		res.append(str(classify_faces()))
+		return '*#&%^@'.join(res)
+		
+	return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
 
 if __name__=="__main__":
