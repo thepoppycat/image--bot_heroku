@@ -53,8 +53,8 @@ def get_encoded_faces():
 					face = fr.load_image_file(os.path.join(path, f))
 					encoding = fr.face_encodings(face)[0]
 					encoded[f.split(".")[0]] = encoding
-				except:
-					print(f"smth went wrong: file = {f}")
+				except Exception as e:
+					print(f"{e} file = {f}")
 		print(f"Done with {folder}")
 	print(f"{len(encoded)} faces collected")
 	return encoded
@@ -67,10 +67,10 @@ def classify_faces():
 	global FACES
 	faces = FACES
 	img = cv2.imread('raw', 1)
-	print('ok')
 	if img is None:
 		print("Invalid image array")
 		return
+	print("Image ok")
 		
 	faces_encoded = list(faces.values())
 	known_face_names = list(faces.keys())

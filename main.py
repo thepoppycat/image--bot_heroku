@@ -27,12 +27,13 @@ def direct():
 	if request.method == 'POST':
 		url = request.form.get('url')
 		get_img(url)  # saved to 'raw'
-		print(f'File size: {os.path.getsize("raw")}')
+		print(f'File size: {os.path.getsize("raw")} bytes')
 		res = [read_ocr()]
 		print(res[0])
 		res.append(read_qr())
 		print(res[1])
 		res.append(classify_faces())
+		print(res[2]
 		res = list(map(str, res))
 		return '*#&%^@'.join(res)
 		
