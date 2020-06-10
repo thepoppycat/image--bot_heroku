@@ -10,4 +10,4 @@ Then find the location using
 
 Finally set the config variable using 
 
-`heroku config:set TESSDATA_PREFIX=[LOCATION HERE]`
+`heroku config:set TESSDATA_PREFIX=[LOCATION HERE]` 
