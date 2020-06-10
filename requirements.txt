@@ -7,3 +7,6 @@ dlib
 face-recognition==1.2.3
 opencv-python==4.2.0.32
 requests==2.22.0
+zbar
+pypng
+python-qrtools

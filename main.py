@@ -1,7 +1,7 @@
 from flask import Flask, redirect, request, flash
 import os
 
-from direct import get_img, read_ocr, classify_faces
+from direct import get_img, read_ocr, classify_faces, read_qr
 
 app = Flask(__name__)
 
@@ -28,10 +28,12 @@ def direct():
         url = request.form.get('url')
         get_img(url)  # saved to 'raw'
         print(f'File size: {os.path.getsize("raw")}')
-        res = read_ocr()
-        print(res)
-        res += '!^@*!%@^#*!@^#'+str(classify_faces())
-        return res
+        res = [read_ocr()]
+        print(res[0])
+		res.append(read_qr())
+		print(res[1])
+        res.append(str(classify_faces()))
+        return '*#&%^@'.join(res)
 
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
