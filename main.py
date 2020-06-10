@@ -33,7 +33,7 @@ def direct():
 		res.append(read_qr())
 		print(res[1])
 		res.append(classify_faces())
-		print(res[2]
+		print(res[2])
 		res = list(map(str, res))
 		return '*#&%^@'.join(res)
 		
