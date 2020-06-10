@@ -20,11 +20,12 @@ def direct():
 		print(f'File size: {os.path.getsize("raw")} bytes')
 		res = [read_ocr()]
 		print(res[0])
-		res.append(read_qr())
-		print(res[1])
 		res.append(classify_faces())
-		print(res[2])
-		res = list(map(str, res))
+		print(res[1])
+        res.append(read_qr())
+	    print(res[2])
+        res = list(map(str, res))
+        os.remove('raw')
 		return '*#&%^@'.join(res)
 		
 	return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')

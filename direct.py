@@ -28,6 +28,7 @@ def read_ocr():
 	text = text.replace('|', 'I')
 	text = text.replace('\n', ' ')
 	text = text.replace('[', '')
+	os.remove('gray.png')
 	return text
 	
 def read_qr():
