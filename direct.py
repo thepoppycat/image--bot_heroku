@@ -34,10 +34,9 @@ def read_qr():
 	img = cv2.imread('raw', 1)
 	detector = cv2.QRCodeDetector()
 	data, bbox, _ = detector.detectAndDecode(img)
-    if data:
+	if data:
 		print("QR Code detected-->")
-		return data
-	return
+	return data
 	
 def get_encoded_faces():
 	encoded = {}
