@@ -7,18 +7,8 @@ app = Flask(__name__)
 
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def home():
-    if request.method == 'POST':
-        print(request.files)
-        request.files['raw'].save('raw')
-        request.files['gray'].save('gray')
-        print(f'File size: {os.path.getsize("raw")}')
-        text = read_ocr_plain()
-        res = text
-        res += '!^@*!%@^#*!@^#'+str(classify_faces_plain())
-        return res
-
     return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
 
