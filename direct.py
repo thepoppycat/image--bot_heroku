@@ -6,7 +6,7 @@ import pytesseract
 import face_recognition as fr
 import os
 import numpy as np
-from qrtools import QR 
+#from qrtools import QR 
 
 def get_img(url):
     r = requests.get(url, stream=True)
@@ -33,7 +33,8 @@ def read_ocr():
     return text
 	
 def read_qr():
-	my_QR = QR(filename = "raw") 
+	return
+	my_QR = b''#QR(filename = "raw") 
   
 	# decodes the QR code and returns True if successful 
 	my_QR.decode() 
