@@ -61,13 +61,6 @@ FACES = get_encoded_faces()
 
 
 def classify_faces():
-    """
-    will find all of the faces in a given image and label
-    them if it knows what they are
-
-    :param im: str of file path
-    :return: list of face names
-    """
 	global FACES
 	faces = FACES
 	img = cv2.imread('raw', 1)
