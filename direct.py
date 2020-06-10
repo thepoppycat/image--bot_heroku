@@ -53,7 +53,11 @@ def get_encoded_faces():
 					encoding = fr.face_encodings(face)[0]
 					encoded[f.split(".")[0]] = encoding
 				except Exception as e:
-					print(f"{e} file = {f}")
+					print(f"{e}; file = {f}")
+					try:
+						print(len(fr.face_encodings(face)))
+					except Exception as e:
+						print("oh no encodings don't work")
 		print(f"Done with {folder}")
 	print(f"{len(encoded)} faces collected")
 	return encoded
