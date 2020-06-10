@@ -49,8 +49,10 @@ def get_encoded_faces():
     :return: dict of (name, image encoded)
     """
     encoded = {}
-    paths = ["./faces/", "./faces/hist/"]
-    for path in paths:
+    paths = ["school", "hist", "world"]
+	
+    for folder in folders:
+		path = "./faces/"+folder
         for f in os.listdir(path):
             if f.endswith(".jpg") or f.endswith(".png"):
                 try:
@@ -58,6 +60,7 @@ def get_encoded_faces():
                     encoding = fr.face_encodings(face)[0]
                     encoded[f.split(".")[0]] = encoding
                 except:
+					print("smth went wrong")
                     pass
 
 
