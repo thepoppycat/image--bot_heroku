@@ -39,15 +39,8 @@ def read_qr():
 	my_QR.decode() 
   
 	return my_QR.data 
-
-
+	
 def get_encoded_faces():
-    """
-    looks through the faces folder and encodes all
-    the faces
-
-    :return: dict of (name, image encoded)
-    """
 	encoded = {}
 	paths = ["school", "hist", "world"]
 	
