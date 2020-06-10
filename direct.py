@@ -54,8 +54,9 @@ def get_encoded_faces():
 					encoding = fr.face_encodings(face)[0]
 					encoded[f.split(".")[0]] = encoding
 				except:
-					print("smth went wrong")
-		print("Done.")
+					print(f"smth went wrong: file = {f}")
+		print(f"Done with {folder}")
+	print(f"{len(encoded)} faces collected")
 	return encoded
 
 
