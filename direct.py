@@ -42,9 +42,10 @@ def read_qr():
 	
 def get_encoded_faces():
 	encoded = {}
-	paths = ["school", "hist", "world"]
+	folders = ["school", "hist", "world"]
 	
 	for folder in folders:
+		print(f"Getting from {folder}...")
 		path = "./faces/"+folder
 		for f in os.listdir(path):
 			if f.endswith(".jpg") or f.endswith(".png"):
@@ -54,6 +55,7 @@ def get_encoded_faces():
 					encoded[f.split(".")[0]] = encoding
 				except:
 					print("smth went wrong")
+		print("Done.")
 	return encoded
 
 
