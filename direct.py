@@ -50,7 +50,7 @@ def get_encoded_faces():
 		for f in os.listdir(path):
 			if f.endswith(".jpg") or f.endswith(".png"):
 				try:
-					face = fr.load_image_file(path + f)
+					face = fr.load_image_file(os.path.join(path, f))
 					encoding = fr.face_encodings(face)[0]
 					encoded[f.split(".")[0]] = encoding
 				except:
